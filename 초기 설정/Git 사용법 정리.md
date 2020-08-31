@@ -162,3 +162,47 @@ origin  https://github.com/내 계정/Daily-Algorithm.git (push)
 
 `git commit -m "[DELETE] 김아무개 전기버스"`
 
+<br>
+
+## 7. Pull Request
+
+내 저장소에서 변경한 사항을 **원본 저장소**에 합쳐달라고 요청해봅시다!
+
+`push`까지 완료 후 내 계정의 github 저장소에 들어오면 **Pull Request**와 **Compare**이 활성화 돼있습니다.
+
+![image-20200831235229001](img/image-20200831235229001.png)
+
+둘 중 아무거나 누르면 Pull Request를 생성할 수 있습니다.
+
+
+
+![image-20200831235317144](img/image-20200831235317144.png)
+
+- base repository: 수정사항 반영해달라고 요청을 보낼 원본 저장소
+- head repository: 수정사항이 있는 내 저장소
+
+
+
+**Create pull request**를 누르면 comment를 작성할 수 있습니다. (선택사항)
+
+![image-20200831235642922](img/image-20200831235642922.png)
+
+
+
+그럼 끝! 원본 저장소의 관리자가 내 Pull Request를 반영해줄 때까지 기다리면 됩니다. (빨리 반영하고 싶으면 갠톡 ㄱㄱ)
+
+<br>
+
+## 8. 수정사항 반영 이후 동기화
+
+원본 저장소에 수정사항이 반영되면 (=merge) 내 저장소와 원본 저장소를 동기화해야합니다.
+
+```bash
+git pull SolvingClub master
+```
+
+- 원본 저장소 이름 SolvingClub으로 정했던 것 잊지 않으셨죠? SolvingClub의 마스터 브랜치에서 pull해오는 과정입니다.
+
+
+
+진짜 끝!
