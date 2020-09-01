@@ -1,0 +1,43 @@
+import sys
+sys.stdin = open('미로_input.txt')
+
+dx = [0, 0, -1, 1]
+dy = [1, -1, 0, 0]
+
+def dfs(i, j, maze, visit):
+    stack = []
+    cx = i
+    cy = j
+    visit[cx][cy] = 1  # 방문 처리
+    stack.append((cx, cy))
+    while True:
+        if len(stack) == 0:
+            break
+        for k in range(4):
+            nx = cx + dx[k]
+            ny = cy + dy[k]
+            # 범위 이내이며, 벽이 아니고, 방문 안했을 경우
+            if 0 <= nx < n and 0 <= ny < n and maze[nx][ny] != 1 and visit[nx][ny] == 0:
+                if maze[nx][ny] == 3:
+                    global answer
+                    answer = 1
+                stack.append((nx,ny))
+                visit[nx][ny] = 1
+        cx, cy = stack.pop()
+
+# 2에서 출발, 3에 도착, 0이 통로, 1이 벽
+T = int(input())
+for test_case in range(1, T + 1):
+    answer = 0
+    n = int(input())
+    # maze 이차원 배열 선언 및 입력
+    maze = [list(map(int, input())) for _ in range(n)]
+    # visit 이차원 배열 선언 및 입력
+    visit = [[0]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if maze[i][j] == 2: ## 출발 장소 구하기
+                dfs(i, j, maze, visit)
+                break
+
+    print("#{0} {1}".format(test_case, answer))
