@@ -25,7 +25,7 @@ T = int(input())
 for t in range(T):
     N = int(input())
     mat = [list(map(int, input().split())) for _ in range(N)]
-    # 각 행에서 최대값을 골라 더한 것을 댭을 담을 mini에 넣어준다.
+    # 각 행에서 최대값을 골라 더한 것을 댭을 담을 mini에 넣어준다
     mini = 0
     for i in range(N):
         mini += max(mat[i])
