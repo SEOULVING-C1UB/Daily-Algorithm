@@ -7,12 +7,12 @@ def findmin(k, n, cursum):
     global mini
     # 모든 열에 대해 다 고르면
     if k == n:
-        # 최소값 갱신
+        # 최솟값 갱신
         if cursum < mini:
             mini = cursum
     # 아직 다 고르지 않았다면
     else:
-        # 현재까지의 합이 현재 최소값보다 작을 경우에만 (가지치기)
+        # 현재까지의 합이 현재 최솟값보다 작을 경우에만 (가지치기)
         if cursum < mini:
             # 조합 생성
             for i in range(k, n):
