@@ -24,4 +24,3 @@ for t in range(T) :
     # 부분집합의 합
     subsetsum(0, N, 0)
     print('#{} {}' .format(t+1, mini))
-    
