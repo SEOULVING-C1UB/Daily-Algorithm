@@ -15,25 +15,19 @@ def bfs(F,S):
     Qs = [S]
     parentsF = []
     parentsS = []
-    visitedF = [0]*(V+1)
-    visitedS = [0]*(V+1)
-    visitedF[F] = 1
-    visitedS[S] = 1
     # 우선 첫번째 대상 F (First)를 돌려서 부모노드가 뭐가 있는지 확인
     while Qf:
         s = Qf.pop(0)
         w = tree[s][2]
-        if visitedF[w] == 0 and w != 0:
+        if w != 0:
             Qf.append(w)
-            visitedF[w] = 1
             parentsF.append(w)
     # 두번째 대상 S (Second)를 돌리고 만약 첫번째 대상의 부모노드와 중복되는 부모노드가 나오면 멈춘다
     while Qs:
         s = Qs.pop(0)
         w = tree[s][2]
-        if visitedS[w] == 0 and w != 0:
+        if w != 0:
             Qs.append(w)
-            visitedS[w] = 1
             parentsS.append(w)
         if w in parentsF:
             break
