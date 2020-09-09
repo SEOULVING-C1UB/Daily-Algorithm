@@ -1,12 +1,12 @@
 import sys
 sys.stdin = open("중위순회.txt")
 
-def preorder(node):
+def inorder(node):
     global ans                  # 답
     if node:                    # 노드가 0이 아니라면(값이 있다면)
-        preorder(tree[node][0]) # 현재 노드에서 왼쪽자식노드 기준으로 재귀호출
+        inorder(tree[node][0])  # 현재 노드에서 왼쪽자식노드 기준으로 재귀호출
         ans += tree[node][2]    # 중위순회
-        preorder(tree[node][1]) # 현재 노드에서 오른쪽자식노드 기준으로 재귀호출
+        inorder(tree[node][1])  # 현재 노드에서 오른쪽자식노드 기준으로 재귀호출
 
 T = 10
 
@@ -39,5 +39,5 @@ for t in range(1, T+1):
      [0,  0, 'E']
      [0,  0, 'S']
     """
-    preorder(1)                         # 함수실행
+    inorder(1)                          # 함수실행
     print("#{} {}".format(t, ans))      # 답 출력
