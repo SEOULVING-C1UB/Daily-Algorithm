@@ -9,9 +9,9 @@ def sol(n):
         if tree[n] is not None:
             return tree[n]
         else:
-            if 2 * n + 1 <= N: # if node has only one sibling
+            if 2 * n + 1 <= N:      # if node has two sibling
                 tree[n] = sol(2 * n) + sol(2 * n + 1)
-            else:
+            else:                   # if node has only one sibling
                 tree[n] = sol(2 * n)
             return tree[n]
 
