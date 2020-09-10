@@ -1,3 +1,4 @@
+# ordinary heappush
 def heappush(n):
     global heapcount
     heap.append(n)
