@@ -15,7 +15,6 @@ def inorder(idx):
 T = int(input())
 for tc in range(1, T + 1):
     N = int(input())
-    tree = [0 for _ in range(N + 1)]
     bst = [0 for _ in range(N + 1)]
     cnt = 1
     inorder(1)
