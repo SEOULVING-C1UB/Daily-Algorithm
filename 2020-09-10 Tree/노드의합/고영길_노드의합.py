@@ -18,6 +18,7 @@ def sol(n):
 
 for tc in range(1, int(input()) + 1):
     N, M, L = map(int, input().split())
+    # use 'None' to avoid confusing between False and zero. Input number may be zero.
     tree = [None for _ in range(N + 1)]
     for _ in range(M):
         idx, val = map(int, input().split())
