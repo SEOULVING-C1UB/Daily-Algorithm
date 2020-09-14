@@ -10,18 +10,16 @@ cnt = 0
 # 답
 ans = []
 
+
 # 범위 체크
-
-
 def check(x, y):
     if 0 <= x < N and 0 <= y < N:
         return True
     else:
         return False
 
+
 # 단지 찾아가기
-
-
 def find(x, y):
     global cnt
     # 좌우상하
