@@ -32,15 +32,15 @@ print(K * ((l1 * l2) - (s1 * s2)))
 Second Trial
 I think I can make this code better and shorter.
 Use same algorithm, but make code better.
-The way that TaeYang walked follows next rules.
-[longest width, longest height, short width, empty height, empty width, short height]
-So we can notice ((index of longest) + 3) % 6 = index ofempty 
+The ways that TaeYang walked always follow next pattern.
+[long width, long height, short width, empty height, empty width, short height]
+So we can notice ((index of long) + 3) % 6 = index of empty 
 """
 
 K = int(input())
 # w : ways that TaeYang walked
 w = [int(input().split()[1]) for _ in range(6)]
-# a,b : indexes of longest sides of rectangle, c,d : indexes of sides of empty rectangle
+# a,b : indexes of rectangle's long sides, c,d : indexes of empty rectangle's side
 a = w.index(max(w))
 b = w.index(max(w[a - 1], w[a + 1]))
 c = (a + 3) % 6
