@@ -77,32 +77,35 @@ while True:
         cnt -= melted
         cheese = after_hour
 
-
-
 # ------------------------------------------
 # this is better way
 from collections import deque
-n,m=map(int,input().split())
-a=[[*map(int,input().split())] for _ in range(n)]
-di,dj=[0,1,0,-1],[1,0,-1,0]
-t,x=0,0
+
+n, m = map(int, input().split())
+a = [[*map(int, input().split())] for _ in range(n)]
+di, dj = [0, 1, 0, -1], [1, 0, -1, 0]
+t, x = 0, 0
 while 1:
-  v=[[0]*m for _ in range(n)]
-  b=[]
-  q=deque([(0,0)])
-  v[0][0]=1
-  while q:
-    p=q.popleft()
-    for k in range(4):
-      i,j=p[0]+di[k],p[1]+dj[k]
-      if 0<=i<n and 0<=j<m and v[i][j]==0:
-        v[i][j]=1
-        if a[i][j]: b.append((i,j))
-        else: q.append((i,j))
-  if b:
-    t+=1
-    for p in b: a[p[0]][p[1]]=0
-    x=len(b)
-  else:
-    print(t); print(x)
-    break
+    v = [[0] * m for _ in range(n)]
+    b = []
+    q = deque([(0, 0)])
+    v[0][0] = 1
+    while q:
+        p = q.popleft()
+        for k in range(4):
+            i, j = p[0] + di[k], p[1] + dj[k]
+            if 0 <= i < n and 0 <= j < m and v[i][j] == 0:
+                v[i][j] = 1
+                if a[i][j]:
+                    b.append((i, j))
+                else:
+                    q.append((i, j))
+    if b:
+        t += 1
+        for p in b:
+            a[p[0]][p[1]] = 0
+        x = len(b)
+    else:
+        print(t);
+        print(x)
+        break
