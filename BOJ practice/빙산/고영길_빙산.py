@@ -1,4 +1,7 @@
+# pypy로 해야 시간초과가 안난다.
 from copy import deepcopy
+import sys
+
 dy = [1, -1, 0, 0]
 dx = [0, 0, 1, -1]
 
@@ -48,7 +51,7 @@ def melt(ice):
     return after
 
 
-
+input = sys.stdin.readline
 N, M = map(int, input().split())
 ice = [list(map(int, input().split())) for _ in range(N)]
 h = 1
@@ -57,6 +60,5 @@ ice = melt(ice)
 while cnt_iceberg() == 1:
     ice = melt(ice)
     h += 1
-
 
 print(h)
