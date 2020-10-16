@@ -27,8 +27,6 @@ def sol(idx, room):
     global answer
     if idx == cnt_cctv:
         answer = min(answer, count_zero(room))
-        print(*room, sep='\n')
-        print()
         return
 
     y, x = cctvs[idx]
@@ -45,14 +43,14 @@ def sol(idx, room):
                 new_room = check(y, x, d, room)
             elif room[y][x] == 2:
                 new_room = check(y, x, d, room)
-                new_room = check(y, x, d - 2, room)
+                new_room = check(y, x, d - 2, new_room)
             elif room[y][x] == 3:
                 new_room = check(y, x, d, room)
-                new_room = check(y, x, d - 1, room)
+                new_room = check(y, x, d - 1, new_room)
             elif room[y][x] == 4:
                 new_room = check(y, x, d, room)
-                new_room = check(y, x, d - 1, room)
-                new_room = check(y, x, d - 2, room)
+                new_room = check(y, x, d - 1, new_room)
+                new_room = check(y, x, d - 2, new_room)
             sol(idx + 1, new_room)
 
 
