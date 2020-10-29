@@ -1,7 +1,9 @@
+# Second trial : find the cargo that finished earliest time
+
 for tc in range(1, int(input()) + 1):
     N = int(input())
     cargos = [list(map(int, input().split())) for _ in range(N)]
-    cargos.sort(key=lambda x: x[1] - x[0])
+    cargos.sort(key=lambda x: x[1])
     cap_time = [False] * 24
     answer = 0
     for s, e in cargos:
@@ -11,3 +13,22 @@ for tc in range(1, int(input()) + 1):
             cap_time[i] = True
         answer += 1
     print('#{} {}'.format(tc, answer))
+
+"""
+First trial
+Sort by taken time -> push starting from smallest.
+Although this code can pass test case of SWEA, it isn't great algorithm.
+"""
+# for tc in range(1, int(input()) + 1):
+#     N = int(input())
+#     cargos = [list(map(int, input().split())) for _ in range(N)]
+#     cargos.sort(key=lambda x: x[1] - x[0])
+#     cap_time = [False] * 24
+#     answer = 0
+#     for s, e in cargos:
+#         if any(cap_time[s:e]):
+#             continue
+#         for i in range(s, e):
+#             cap_time[i] = True
+#         answer += 1
+#     print('#{} {}'.format(tc, answer))
