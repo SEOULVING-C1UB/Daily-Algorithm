@@ -1,6 +1,7 @@
 from itertools import combinations as coms
 from copy import deepcopy
 
+
 def dist(a, b):
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
@@ -13,10 +14,13 @@ def find_nearest_enemy(pos):
             continue
 
         d = dist(pos, enemy)
-        if D > d < shortest:
+        if d < shortest:
             shortest = d
             sh_idx = i
-    print(sh_idx)
+        elif d == shortest:
+            if sh_idx is None or enemy[1] < enemies[sh_idx][1]:
+                shortest = d
+                sh_idx = i
     return sh_idx
 
 
@@ -25,8 +29,6 @@ def shoot(archers):
     shooted = set()
     for archer in archers:
         shooted.add(find_nearest_enemy(archer))
-    print(shooted)
-
     for s in list(shooted):
         if s is not None:
             alive[s] = False
@@ -36,7 +38,7 @@ def shoot(archers):
 def move(enemies):
     for i in range(len(enemies)):
         if alive[i]:
-            if enemies[i][0] < N:
+            if enemies[i][0] < N - 1:
                 enemies[i][0] += 1
             else:
                 alive[i] = False
@@ -53,13 +55,11 @@ for r in range(N):
 
 answer = 0
 
-for archers in coms(zip([N] * N, range(N)), 3):
+for archers in coms(zip([N] * M, range(M)), 3):
     kill = 0
     enemies = deepcopy(s_enemies)
     alive = [True] * len(enemies)
     while any(alive):
-        print(enemies)
-        print(archers)
         shoot(archers)
         move(enemies)
     if kill > answer:
