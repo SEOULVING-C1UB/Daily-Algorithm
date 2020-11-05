@@ -1,7 +1,5 @@
 import heapq
-import sys
 
-sys.stdin = open('최소 신장 트리_input.txt', 'r')
 # prim
 for tc in range(int(input())):
     V, E = map(int, input().split())
@@ -28,10 +26,8 @@ for tc in range(int(input())):
                 heapq.heappush(pq, (key[dest], dest))
     print('#{} {}'.format(tc + 1, sum(key)))
 
+
 # kruskal
-sys.stdin = open('최소 신장 트리_input.txt', 'r')
-
-
 def find_set(n):
     if set_id[n] == n:
         return n

@@ -1,7 +1,6 @@
+# Dijkstra using heap
 import heapq
-import sys
 
-sys.stdin = open('최소 비용_input.txt', 'r')
 dr = [1, 0, -1, 0]
 dc = [0, 1, 0, -1]
 for tc in range(int(input())):
@@ -19,11 +18,15 @@ for tc in range(int(input())):
             nr = r + dr[d]
             nc = c + dc[d]
             if 0 <= nc < N and 0 <= nr < N and not visited[nr][nc]:
+                # Case next block is higher.
                 if field[nr][nc] > field[r][c]:
+                    # compare
+                    # 1. (difference between current, next block) + (sum of distance past) + 1
+                    # 2. (stored sum of distance to next block)
                     if field[nr][nc] - field[r][c] + cur + 1 < wt[nr][nc]:
                         wt[nr][nc] = field[nr][nc] - field[r][c] + cur + 1
                         heapq.heappush(q, (wt[nr][nc], (nr, nc)))
-                else:
+                else: # next block is lower or same
                     if cur + 1 < wt[nr][nc]:
                         wt[nr][nc] = cur + 1
                         heapq.heappush(q, (wt[nr][nc], (nr, nc)))
