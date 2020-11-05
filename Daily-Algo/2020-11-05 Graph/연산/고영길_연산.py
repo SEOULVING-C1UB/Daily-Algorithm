@@ -1,12 +1,9 @@
-# 1. Using function in each loop shorten executing time.
+# 1. Using function in each loop shorten run-time.
 # 2. Separate case to use DFS, BFS. In this problem, BFS is faster.
 # 3. Check table using 'hash' is faster and more efficient in memory than using 'list'.
 
 
 from collections import deque
-import sys
-
-sys.stdin = open('연산_input.txt', 'r')
 
 
 # For shorten time, make function each step.
@@ -25,7 +22,7 @@ def bfs():
     q = deque([[N, 0]])
     while q:
         n, cnt = q.popleft()
-        if check.get(n, 0):  # check visited
+        if check.get(n, 0):  # check visited by hash
             continue
         check[n] = 1
         cnt += 1

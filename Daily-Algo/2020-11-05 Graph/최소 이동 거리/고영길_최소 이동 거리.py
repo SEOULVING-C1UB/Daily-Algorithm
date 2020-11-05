@@ -1,9 +1,9 @@
+# Dijkstra using heap
 import heapq
-import sys
 
-sys.stdin = open('최소 이동 거리_input.txt', 'r')
 for tc in range(int(input())):
     V, E = map(int, input().split())
+    # use hash not to waist memory
     MAP = {i: [] for i in range(V + 1)}
     for _ in range(E):
         s, e, d = map(int, input().split())
