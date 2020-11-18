@@ -14,6 +14,26 @@ def assign(assigned_stairs, idx):
         yield from assign(assigned_stairs + '1', idx)
 
 
+def timelapse(time):
+    g1 = [[x[0], x[1], x[2] - time] for x in group1]
+    g2 = [[x[0], x[1], x[2] - time] for x in group2]
+    group1, group2 = g1, g2
+    while going_down[0]:
+        if going_down[0][0] < dis:
+            going_down[0].popleft()
+    while going_down[1]:
+        if going_down[1][0] < dis:
+            going_down[1].popleft()
+    while waiting[0] and len(going_down[0]) < 3:
+        going_down.append(waiting[0].popleft())
+    while waiting[1] and len(going_down[1]) < 3:
+        going_down.append(waiting[1].popleft())
+    if len(going_down[assigned_stairs]) < 3:
+        going_down[assigned_stairs].append(stairs[assigned_stairs][2])
+    else:
+        waiting[assigned_stairs].append(stairs[assigned_stairs][2])
+
+
 def find_nearest_person():
     if not group1:
         return group2.popleft()
@@ -46,13 +66,18 @@ for tc in range(int(input())):
         group1, group2 = [], []
         for i in range(number_of_people):
             if assigned[i] == 0:
-                group1.append([people[i][0], people[i][1], dist(people[i], stairs[assigned[i][:1]])])
+                group1.append([people[i][0], people[i][1], dist(people[i], stairs[assigned[i][:1]]), assigned[i]])
             else:
-                group2.append([people[i][0], people[i][1], dist(people[i], stairs[assigned[i][:1]])])
+                group2.append([people[i][0], people[i][1], dist(people[i], stairs[assigned[i][:1]]), assigned[i]])
 
-        group1 = deque(sorted(group1, key=lambda x: x[2]))
-        group2 = deque(sorted(group2, key=lambda x: x[2]))
+                group1 = deque(sorted(group1, key=lambda x: x[2]))
+                group2 = deque(sorted(group2, key=lambda x: x[2]))
 
         waiting = [deque(), deque()]
+        going_down = [deque(), deque()]
         cur_time = 0
         while group1 or group2:
+            r, c, dis, assigned_stairs = find_nearest_person()
+            cur_time += dis
+            timelapse(dis)
+            
