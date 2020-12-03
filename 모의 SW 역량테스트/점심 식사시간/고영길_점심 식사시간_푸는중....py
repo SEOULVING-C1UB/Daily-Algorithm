@@ -80,4 +80,3 @@ for tc in range(int(input())):
             r, c, dis, assigned_stairs = find_nearest_person()
             cur_time += dis
             timelapse(dis)
-            
