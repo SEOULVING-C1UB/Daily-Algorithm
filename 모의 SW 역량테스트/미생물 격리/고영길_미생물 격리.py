@@ -37,6 +37,11 @@ for tc in range(int(input())):
         r, c, nom, di = map(int, input().split())
         MICROS.append(micro(nom, di - 1, [r, c]))
     cur_time = 0
+    if M > 2 * N - 2:
+        rep = 2 * 2 * (M // (2 * N - 2))
+        for m in MICROS:
+            m.nom //= rep
+
     while cur_time < M:
         cur_time += 1
         for m in MICROS:
